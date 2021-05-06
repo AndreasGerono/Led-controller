@@ -9,60 +9,50 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var viewModel: LedViewModel
     var body: some View {
-        VStack {
-            HStack {
-                LedView(led_isOn: true, led_color: Color.red, led_index: 16)
-                LedView(led_isOn: true, led_color: Color.green, led_index: 15)
+        HStack {
+            ForEach(viewModel.leds) { led in
+                LedView(led: led)
+                    .onTapGesture {
+                        self.viewModel.tapLed(led: led)
+                }
+                    .onLongPressGesture { self.viewModel.holdLed(led: led)}
+                    .aspectRatio(1, contentMode: .fit)
             }
-            HStack {
-                LedView(led_isOn: true, led_color: Color.red, led_index: 14)
-                LedView(led_isOn: true, led_color: Color.green, led_index: 12)
-            }
-            HStack {
-                LedView(led_isOn: true, led_color: Color.blue, led_index: 12)
-                LedView(led_isOn: false, led_color: Color.yellow, led_index: 11)
-            }
-            HStack {
-                LedView(led_isOn: false, led_color: Color.orange, led_index: 9)
-                LedView(led_isOn: false, led_color: Color.pink, led_index: 8)
-            }
-            HStack {
-                LedView(led_isOn: false, led_color: Color.orange, led_index: 7)
-                LedView(led_isOn: false, led_color: Color.pink, led_index: 6)
-            }
-            HStack {
-                LedView(led_isOn: false, led_color: Color.orange, led_index: 5)
-                LedView(led_isOn: false, led_color: Color.pink, led_index: 4)
-            }
-            HStack {
-                LedView(led_isOn: false, led_color: Color.orange, led_index: 3)
-                LedView(led_isOn: false, led_color: Color.pink, led_index: 2)
-            }
-            HStack {
-                LedView(led_isOn: false, led_color: Color.pink, led_index: 1)
-                LedView(led_isOn: true, led_color: Color.yellow, led_index: 10)
-            }
-
         }
         .padding()
     }
 }
 
-
-
 struct LedView: View {
-    var led_isOn: Bool
-    var led_color: Color
-    var led_index: Int
-    var opacity: Double {led_isOn ? 1 : 0.3}
+    var led: LedController.Led
+    var opacity: Double {led.isOn ? opaque : transparent}
+    var text_color: Color = Color.black     // For white or black font dependent of color.
     var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 10).fill(led_color)
-            Text("Led: \(led_index)")
+        GeometryReader { geometry in
+            self.body(for: geometry.size)
         }
-        .opacity(opacity)
     }
+    
+    func body(for size: CGSize) -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10).fill(Color(led.color))
+            Text("Led: \(self.led.id+1)").foregroundColor(text_color)
+        }
+        .opacity(self.opacity)
+        .font(Font.system(size: fontSize(for: size)))
+    }
+    
+    // MARK: - Drowing Constants
+    let cornerRadius: CGFloat = 10
+    let opaque: Double = 1.0
+    let transparent: Double = 0.3
+    
+    func fontSize(for size: CGSize) -> CGFloat {
+        min(size.width, size.height) * 0.2
+    }
+    
 }
 
 
@@ -87,6 +77,6 @@ struct LedView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(viewModel: LedViewModel())
     }
 }

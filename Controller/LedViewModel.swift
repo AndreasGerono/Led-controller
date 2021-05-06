@@ -8,16 +8,14 @@
 
 import SwiftUI
 
-class LedViewModel {
-    private var model: LedController = LedViewModel.createLedController()
+class LedViewModel: ObservableObject {
+    // This is a property wrapper -> Aka magic variable, wrapper
+    @Published private var model: LedController = LedViewModel.createLedController()
     
-    // Cant use struct functions before init! So static function... -> class function not object.
+    // Can't use struct functions before init! So static function... -> class function not object.
     static func createLedController() -> LedController {
-        let led_colors: Array<LedController.LedColor> = [LedController.LedColor(red: 10, green: 10, blue: 128),
-                                                         LedController.LedColor(red: 128, green: 10, blue: 10),
-                                                         LedController.LedColor(red: 10, green: 128, blue: 10)]
-        
-        return LedController(no_leds: 3) { index in led_colors[index] }
+        let colors_states: Array<(UIColor, Bool)> = [(UIColor.black, false), (UIColor.red, true), (UIColor.cyan, true), (UIColor.green, false)]
+        return LedController(no_leds: colors_states.count) { colors_states[$0] }
     }
     
     // MARK: - Access to the model

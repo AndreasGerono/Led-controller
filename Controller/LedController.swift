@@ -7,36 +7,34 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct LedController {
     var leds: Array<Led>
     var isConnected: Bool = false
     
-    func toogleLed(led: Led) {
-        print("Led toogled \(led)")
+    mutating func toogleLed(led: Led) {
+        if let i = leds.firstIndex(where: {$0.id == led.id} ) {
+            leds[i].isOn = !leds[i].isOn
+            print("Led toogled \(leds[i])")
+        }
     }
     
     func chooseLed(led: Led) {
         print("Led choosen \(led)")
     }
     
-    init(no_leds: Int, ledFactory: (Int) -> LedColor) {
+    init(no_leds: Int, ledFactory: (Int) -> (UIColor, Bool)) {
         leds = Array<Led>()
         for index in 0..<no_leds {
-            let led_color = ledFactory(index)
-            leds.append(Led(color: led_color, isOn: false, index: index))
+            let color_state = ledFactory(index)
+            leds.append(Led(color: color_state.0, isOn: color_state.1, id: index))
         }
     }
     
-    struct LedColor {
-        var red: Int
-        var green: Int
-        var blue: Int
-    }
-    
-    struct Led {
-        var color: LedColor
+    struct Led: Identifiable {
+        var color: UIColor
         var isOn: Bool
-        var index: Int
+        var id: Int
     }
 }
