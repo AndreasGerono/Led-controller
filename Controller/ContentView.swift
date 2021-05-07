@@ -11,15 +11,12 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var viewModel: LedViewModel
     var body: some View {
-        HStack {
-            ForEach(viewModel.leds) { led in
-                LedView(led: led)
-                    .onTapGesture {
-                        self.viewModel.tapLed(led: led)
+        Grid(viewModel.leds) { led in
+            LedView(led: led)
+                .onTapGesture {
+                viewModel.tapLed(led: led)
                 }
-                    .onLongPressGesture { self.viewModel.holdLed(led: led)}
-                    .aspectRatio(1, contentMode: .fit)
-            }
+                .onLongPressGesture { viewModel.holdLed(led: led) }
         }
         .padding()
     }
@@ -31,20 +28,23 @@ struct LedView: View {
     var text_color: Color = Color.black     // For white or black font dependent of color.
     var body: some View {
         GeometryReader { geometry in
-            self.body(for: geometry.size)
+            body(for: geometry.size)
         }
     }
     
     func body(for size: CGSize) -> some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 10).fill(Color(led.color))
-            Text("Led: \(self.led.id+1)").foregroundColor(text_color)
+            RoundedRectangle(cornerRadius: cornerRadius).fill(Color(led.color))
+            Text("Led: \(led.id+1)").foregroundColor(text_color)
         }
-        .opacity(self.opacity)
+        .opacity(opacity)
         .font(Font.system(size: fontSize(for: size)))
+        .padding(ledPadding)
+
     }
     
     // MARK: - Drowing Constants
+    let ledPadding: CGFloat = 3
     let cornerRadius: CGFloat = 10
     let opaque: Double = 1.0
     let transparent: Double = 0.3
