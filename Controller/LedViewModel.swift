@@ -34,9 +34,9 @@ class LedViewModel: ObservableObject {
     
     
     // MARK: - Intent(s)
-    
-    func tapLed(led: LedController.Led) {
-        model.chooseLed(led: led)
+        
+    func changeColor(of led: LedController.Led, to color: UIColor) {
+        model.updateColor(of: led, to: color)
     }
     
     func holdLed(led: LedController.Led) {

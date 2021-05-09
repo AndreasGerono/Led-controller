@@ -20,8 +20,11 @@ struct LedController {
         }
     }
     
-    func chooseLed(led: Led) {
-        print("Led choosen \(led)")
+    mutating func updateColor(of led: Led, to color: UIColor) {
+        if let i = leds.firstIndex(where: {$0.id == led.id} ) {
+            leds[i].color = color
+            print("Led color changed! \(leds[i])")
+        }
     }
     
     init(no_leds: Int, ledFactory: (Int) -> (UIColor, Bool)) {
