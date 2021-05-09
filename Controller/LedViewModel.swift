@@ -13,7 +13,7 @@ class LedViewModel: ObservableObject {
     @Published private var model: LedController = LedViewModel.createLedController()
     
     // Can't use struct functions before init! So static function... -> class function not object.
-    static func createLedController() -> LedController {
+    private static func createLedController() -> LedController {
         let colors_states: Array<(UIColor, Bool)> = [(UIColor.black, false),
                                                      (UIColor.red, true),
                                                      (UIColor.cyan, true),

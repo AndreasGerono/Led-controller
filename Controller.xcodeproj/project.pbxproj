@@ -17,6 +17,7 @@
 		F498FAF92641BFFF00DD1564 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F498FAF72641BFFF00DD1564 /* LaunchScreen.storyboard */; };
 		F498FB012641D2E700DD1564 /* LedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498FB002641D2E700DD1564 /* LedController.swift */; };
 		F498FB032641D55100DD1564 /* LedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498FB022641D55100DD1564 /* LedViewModel.swift */; };
+		F4C9530B264842CC003AD3BE /* UIColor+Random+ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C9530A264842CC003AD3BE /* UIColor+Random+ID.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		F498FAFA2641BFFF00DD1564 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F498FB002641D2E700DD1564 /* LedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedController.swift; sourceTree = "<group>"; };
 		F498FB022641D55100DD1564 /* LedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedViewModel.swift; sourceTree = "<group>"; };
+		F4C9530A264842CC003AD3BE /* UIColor+Random+ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random+ID.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				F498FAEC2641BFFD00DD1564 /* AppDelegate.swift */,
 				F498FAEE2641BFFD00DD1564 /* SceneDelegate.swift */,
 				F498FAF02641BFFD00DD1564 /* ContentView.swift */,
+				F4C9530A264842CC003AD3BE /* UIColor+Random+ID.swift */,
 				F42D5DCA2645B03700EB9FFD /* Grid.swift */,
 				F42D5DCC2645B65900EB9FFD /* GridLayout.swift */,
 				F498FB002641D2E700DD1564 /* LedController.swift */,
@@ -161,6 +164,7 @@
 				F498FAED2641BFFD00DD1564 /* AppDelegate.swift in Sources */,
 				F498FB032641D55100DD1564 /* LedViewModel.swift in Sources */,
 				F498FAEF2641BFFD00DD1564 /* SceneDelegate.swift in Sources */,
+				F4C9530B264842CC003AD3BE /* UIColor+Random+ID.swift in Sources */,
 				F498FAF12641BFFD00DD1564 /* ContentView.swift in Sources */,
 				F498FB012641D2E700DD1564 /* LedController.swift in Sources */,
 				F42D5DCD2645B65900EB9FFD /* GridLayout.swift in Sources */,

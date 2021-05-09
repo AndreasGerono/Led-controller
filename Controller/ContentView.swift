@@ -39,7 +39,7 @@ struct LedView: View {
         }
     }
     
-    func body(for size: CGSize) -> some View {
+    private func body(for size: CGSize) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: cornerRadius).fill(Color(led.color))
             Text("Led: \(led.id+1)").foregroundColor(text_color)
@@ -51,10 +51,10 @@ struct LedView: View {
     }
     
     // MARK: - LedView Drowing Constants
-    let ledPadding: CGFloat = 3
-    let cornerRadius: CGFloat = 10
-    let opaque: Double = 1.0
-    let transparent: Double = 0.3
+    private let ledPadding: CGFloat = 3
+    private let cornerRadius: CGFloat = 10
+    private let opaque: Double = 1.0
+    private let transparent: Double = 0.3
     
     func fontSize(for size: CGSize) -> CGFloat {
         min(size.width, size.height) * 0.2
@@ -76,10 +76,7 @@ struct ColorsSheet: View {
                 VStack {
                     Spacer(minLength: spacerSize(for: geometry.size))
                     Grid(colors) { color in
-                        Rectangle().fill(Color(color)).onTapGesture {
-                            self.showColorsView = false
-                            viewModel.changeColor(of: selectedLed!, to: color)
-                        }
+                        shape(for: color)
                     }
                     Spacer(minLength: spacerSize(for: geometry.size))
                 }
@@ -89,22 +86,18 @@ struct ColorsSheet: View {
         }
     }
     
+    private func shape(for color: UIColor) -> some View {
+        Rectangle().fill(Color(color)).onTapGesture {
+            self.showColorsView = false
+            viewModel.changeColor(of: selectedLed!, to: color)
+        }
+    }
+    
     // MARK: - ColorsSheet Drawing Constants
-    func spacerSize(for size: CGSize) -> CGFloat {
+    private func spacerSize(for size: CGSize) -> CGFloat {
         size.height*0.1
     }
-    
-
-    
 }
-
-extension UIColor: Identifiable {
-    class var random: UIColor {
-        return UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1.0)
-    }
-}
-
-
 
 
 

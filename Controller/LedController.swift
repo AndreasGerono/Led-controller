@@ -10,12 +10,13 @@ import Foundation
 import SwiftUI
 
 struct LedController {
-    var leds: Array<Led>
+    private(set) var leds: Array<Led>
     var isConnected: Bool = false
+    var noOfClicks = 0
     
     mutating func toogleLed(led: Led) {
         if let i = leds.firstIndex(where: {$0.id == led.id} ) {
-            leds[i].isOn = !leds[i].isOn
+            leds[i].isOn.toggle()
             print("Led toogled \(leds[i])")
         }
     }
