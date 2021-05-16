@@ -9,31 +9,35 @@
 /* Begin PBXBuildFile section */
 		F42D5DCB2645B03700EB9FFD /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42D5DCA2645B03700EB9FFD /* Grid.swift */; };
 		F42D5DCD2645B65900EB9FFD /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42D5DCC2645B65900EB9FFD /* GridLayout.swift */; };
+		F4981C1F26518E410044E109 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4981C1E26518E410044E109 /* Assets.xcassets */; };
 		F498FAED2641BFFD00DD1564 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498FAEC2641BFFD00DD1564 /* AppDelegate.swift */; };
 		F498FAEF2641BFFD00DD1564 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498FAEE2641BFFD00DD1564 /* SceneDelegate.swift */; };
 		F498FAF12641BFFD00DD1564 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498FAF02641BFFD00DD1564 /* ContentView.swift */; };
-		F498FAF32641BFFF00DD1564 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F498FAF22641BFFF00DD1564 /* Assets.xcassets */; };
 		F498FAF62641BFFF00DD1564 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F498FAF52641BFFF00DD1564 /* Preview Assets.xcassets */; };
 		F498FAF92641BFFF00DD1564 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F498FAF72641BFFF00DD1564 /* LaunchScreen.storyboard */; };
 		F498FB012641D2E700DD1564 /* LedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498FB002641D2E700DD1564 /* LedController.swift */; };
 		F498FB032641D55100DD1564 /* LedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498FB022641D55100DD1564 /* LedViewModel.swift */; };
 		F4C9530B264842CC003AD3BE /* UIColor+Random+ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C9530A264842CC003AD3BE /* UIColor+Random+ID.swift */; };
+		F4C9530D26484BF1003AD3BE /* LedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C9530C26484BF1003AD3BE /* LedIcon.swift */; };
+		F4DB4D9E264AEA5600435BFE /* LedIconParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB4D9D264AEA5600435BFE /* LedIconParameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F42D5DCA2645B03700EB9FFD /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		F42D5DCC2645B65900EB9FFD /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
+		F4981C1E26518E410044E109 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F498FAE92641BFFD00DD1564 /* Controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F498FAEC2641BFFD00DD1564 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F498FAEE2641BFFD00DD1564 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F498FAF02641BFFD00DD1564 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F498FAF22641BFFF00DD1564 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F498FAF52641BFFF00DD1564 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F498FAF82641BFFF00DD1564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F498FAFA2641BFFF00DD1564 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F498FB002641D2E700DD1564 /* LedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedController.swift; sourceTree = "<group>"; };
 		F498FB022641D55100DD1564 /* LedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedViewModel.swift; sourceTree = "<group>"; };
 		F4C9530A264842CC003AD3BE /* UIColor+Random+ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random+ID.swift"; sourceTree = "<group>"; };
+		F4C9530C26484BF1003AD3BE /* LedIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedIcon.swift; sourceTree = "<group>"; };
+		F4DB4D9D264AEA5600435BFE /* LedIconParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedIconParameters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,15 +70,17 @@
 		F498FAEB2641BFFD00DD1564 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F4981C1E26518E410044E109 /* Assets.xcassets */,
 				F498FAEC2641BFFD00DD1564 /* AppDelegate.swift */,
 				F498FAEE2641BFFD00DD1564 /* SceneDelegate.swift */,
 				F498FAF02641BFFD00DD1564 /* ContentView.swift */,
+				F4C9530C26484BF1003AD3BE /* LedIcon.swift */,
+				F4DB4D9D264AEA5600435BFE /* LedIconParameters.swift */,
 				F4C9530A264842CC003AD3BE /* UIColor+Random+ID.swift */,
 				F42D5DCA2645B03700EB9FFD /* Grid.swift */,
 				F42D5DCC2645B65900EB9FFD /* GridLayout.swift */,
 				F498FB002641D2E700DD1564 /* LedController.swift */,
 				F498FB022641D55100DD1564 /* LedViewModel.swift */,
-				F498FAF22641BFFF00DD1564 /* Assets.xcassets */,
 				F498FAF72641BFFF00DD1564 /* LaunchScreen.storyboard */,
 				F498FAFA2641BFFF00DD1564 /* Info.plist */,
 				F498FAF42641BFFF00DD1564 /* Preview Content */,
@@ -149,8 +155,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F498FAF92641BFFF00DD1564 /* LaunchScreen.storyboard in Resources */,
+				F4981C1F26518E410044E109 /* Assets.xcassets in Resources */,
 				F498FAF62641BFFF00DD1564 /* Preview Assets.xcassets in Resources */,
-				F498FAF32641BFFF00DD1564 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +169,9 @@
 			files = (
 				F498FAED2641BFFD00DD1564 /* AppDelegate.swift in Sources */,
 				F498FB032641D55100DD1564 /* LedViewModel.swift in Sources */,
+				F4C9530D26484BF1003AD3BE /* LedIcon.swift in Sources */,
 				F498FAEF2641BFFD00DD1564 /* SceneDelegate.swift in Sources */,
+				F4DB4D9E264AEA5600435BFE /* LedIconParameters.swift in Sources */,
 				F4C9530B264842CC003AD3BE /* UIColor+Random+ID.swift in Sources */,
 				F498FAF12641BFFD00DD1564 /* ContentView.swift in Sources */,
 				F498FB012641D2E700DD1564 /* LedController.swift in Sources */,
@@ -240,6 +248,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -295,6 +304,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

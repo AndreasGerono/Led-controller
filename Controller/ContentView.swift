@@ -41,23 +41,28 @@ struct LedView: View {
     
     private func body(for size: CGSize) -> some View {
         ZStack {
-            RoundedRectangle(cornerRadius: cornerRadius).fill(Color(led.color))
-            Text("Led: \(led.id+1)").foregroundColor(text_color)
+            RoundedRectangle(cornerRadius: cornerRadius).fill(Color.white)
+            RoundedRectangle(cornerRadius: cornerRadius).stroke(Color.blue, lineWidth: 4).opacity(opacity)
+            LedIcon(led_color: Color(led.color))
         }
-        .opacity(opacity)
         .font(Font.system(size: fontSize(for: size)))
         .padding(ledPadding)
 
     }
     
     // MARK: - LedView Drowing Constants
-    private let ledPadding: CGFloat = 3
+    private let ledPadding: CGFloat = 5
     private let cornerRadius: CGFloat = 10
     private let opaque: Double = 1.0
     private let transparent: Double = 0.3
+    private let frame_scale: CGFloat = 0.8
+    
+    func frameSize(for size: CGSize) -> CGFloat {
+        min(size.width, size.height) * frame_scale
+    }
     
     func fontSize(for size: CGSize) -> CGFloat {
-        min(size.width, size.height) * 0.2
+        min(size.width, size.height) * 0.1
     }
     
 }
@@ -75,20 +80,18 @@ struct ColorsSheet: View {
             NavigationView {
                 VStack {
                     Spacer(minLength: spacerSize(for: geometry.size))
-                    Grid(colors) { color in
-                        shape(for: color)
-                    }
+                    Grid(colors) { color in body(for: color) }
                     Spacer(minLength: spacerSize(for: geometry.size))
                 }
-                .navigationBarTitle("Select color")
-                .navigationBarItems(trailing: Button(action: { self.showColorsView = false }, label: Text("Done").bold))
+                .navigationBarTitle("Select color for led \(selectedLed!.id + 1)")
+                .navigationBarItems(trailing: Button(action: { showColorsView = false }, label: Text("Done").bold))
             }
         }
     }
     
-    private func shape(for color: UIColor) -> some View {
+    private func body(for color: UIColor) -> some View {
         Rectangle().fill(Color(color)).onTapGesture {
-            self.showColorsView = false
+            showColorsView = false
             viewModel.changeColor(of: selectedLed!, to: color)
         }
     }
@@ -98,9 +101,6 @@ struct ColorsSheet: View {
         size.height*0.1
     }
 }
-
-
-
 
 
 
