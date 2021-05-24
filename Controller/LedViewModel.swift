@@ -14,14 +14,14 @@ class LedViewModel: ObservableObject {
     
     // Can't use struct functions before init! So static function... -> class function not object.
     private static func createLedController() -> LedController {
-        let colors_states: Array<(UIColor, Bool)> = [(UIColor.black, false),
+        let colors_states: Array<(UIColor, Bool)> = [(UIColor.green, false),
                                                      (UIColor.red, true),
                                                      (UIColor.cyan, true),
-                                                     (UIColor.green, false),
-                                                     (UIColor.black, false),
-                                                     (UIColor.red, true),
-                                                     (UIColor.cyan, true),
-                                                     (UIColor.green, false)]
+                                                     (UIColor.purple, false),
+                                                     (UIColor.blue, false),
+                                                     (UIColor.yellow, false),
+                                                     (UIColor.systemPink, false),
+                                                     (UIColor.magenta, false)]
         
         return LedController(no_leds: colors_states.count) { colors_states[$0] }
     }

@@ -17,8 +17,11 @@
 		F498FAF92641BFFF00DD1564 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F498FAF72641BFFF00DD1564 /* LaunchScreen.storyboard */; };
 		F498FB012641D2E700DD1564 /* LedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498FB002641D2E700DD1564 /* LedController.swift */; };
 		F498FB032641D55100DD1564 /* LedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498FB022641D55100DD1564 /* LedViewModel.swift */; };
+		F4A99B6A2656CDC90002E192 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A99B692656CDC90002E192 /* ThemeView.swift */; };
 		F4C9530B264842CC003AD3BE /* UIColor+Random+ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C9530A264842CC003AD3BE /* UIColor+Random+ID.swift */; };
 		F4C9530D26484BF1003AD3BE /* LedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C9530C26484BF1003AD3BE /* LedIcon.swift */; };
+		F4D2F07B265AAF3600F3846B /* ColorsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D2F07A265AAF3500F3846B /* ColorsSheet.swift */; };
+		F4D2F07E265C103300F3846B /* themeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D2F07D265C103300F3846B /* themeStore.swift */; };
 		F4DB4D9E264AEA5600435BFE /* LedIconParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DB4D9D264AEA5600435BFE /* LedIconParameters.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +38,11 @@
 		F498FAFA2641BFFF00DD1564 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F498FB002641D2E700DD1564 /* LedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedController.swift; sourceTree = "<group>"; };
 		F498FB022641D55100DD1564 /* LedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedViewModel.swift; sourceTree = "<group>"; };
+		F4A99B692656CDC90002E192 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
 		F4C9530A264842CC003AD3BE /* UIColor+Random+ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random+ID.swift"; sourceTree = "<group>"; };
 		F4C9530C26484BF1003AD3BE /* LedIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedIcon.swift; sourceTree = "<group>"; };
+		F4D2F07A265AAF3500F3846B /* ColorsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsSheet.swift; sourceTree = "<group>"; };
+		F4D2F07D265C103300F3846B /* themeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = themeStore.swift; sourceTree = "<group>"; };
 		F4DB4D9D264AEA5600435BFE /* LedIconParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedIconParameters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,13 +79,10 @@
 				F4981C1E26518E410044E109 /* Assets.xcassets */,
 				F498FAEC2641BFFD00DD1564 /* AppDelegate.swift */,
 				F498FAEE2641BFFD00DD1564 /* SceneDelegate.swift */,
-				F498FAF02641BFFD00DD1564 /* ContentView.swift */,
-				F4C9530C26484BF1003AD3BE /* LedIcon.swift */,
-				F4DB4D9D264AEA5600435BFE /* LedIconParameters.swift */,
+				F4D2F07C265C07E400F3846B /* Views */,
 				F4C9530A264842CC003AD3BE /* UIColor+Random+ID.swift */,
-				F42D5DCA2645B03700EB9FFD /* Grid.swift */,
-				F42D5DCC2645B65900EB9FFD /* GridLayout.swift */,
 				F498FB002641D2E700DD1564 /* LedController.swift */,
+				F4D2F07D265C103300F3846B /* themeStore.swift */,
 				F498FB022641D55100DD1564 /* LedViewModel.swift */,
 				F498FAF72641BFFF00DD1564 /* LaunchScreen.storyboard */,
 				F498FAFA2641BFFF00DD1564 /* Info.plist */,
@@ -94,6 +97,20 @@
 				F498FAF52641BFFF00DD1564 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F4D2F07C265C07E400F3846B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4DB4D9D264AEA5600435BFE /* LedIconParameters.swift */,
+				F498FAF02641BFFD00DD1564 /* ContentView.swift */,
+				F4D2F07A265AAF3500F3846B /* ColorsSheet.swift */,
+				F4A99B692656CDC90002E192 /* ThemeView.swift */,
+				F4C9530C26484BF1003AD3BE /* LedIcon.swift */,
+				F42D5DCA2645B03700EB9FFD /* Grid.swift */,
+				F42D5DCC2645B65900EB9FFD /* GridLayout.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,7 +185,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F498FAED2641BFFD00DD1564 /* AppDelegate.swift in Sources */,
+				F4D2F07E265C103300F3846B /* themeStore.swift in Sources */,
+				F4A99B6A2656CDC90002E192 /* ThemeView.swift in Sources */,
 				F498FB032641D55100DD1564 /* LedViewModel.swift in Sources */,
+				F4D2F07B265AAF3600F3846B /* ColorsSheet.swift in Sources */,
 				F4C9530D26484BF1003AD3BE /* LedIcon.swift in Sources */,
 				F498FAEF2641BFFD00DD1564 /* SceneDelegate.swift in Sources */,
 				F4DB4D9E264AEA5600435BFE /* LedIconParameters.swift in Sources */,

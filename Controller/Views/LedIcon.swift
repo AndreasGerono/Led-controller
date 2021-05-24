@@ -89,13 +89,13 @@ struct LedIcon: View {
     let led_color: Color
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
+            ZStack(alignment: .center) {
                 LedLegs().fill(Color.gray)
                 LedLens().fill(led_color)
                 LedLens().stroke(Color.black, lineWidth: lens_lineWidth)
                 LedInternals().fill(Color.black).opacity(internals_opacity)
             }
-            .frame(width: led_size(for: geometry.size), height: led_size(for: geometry.size))
+            .frame(width: geometry.size.height, height: geometry.size.height)
         }
     }
     
@@ -112,8 +112,6 @@ struct LedIcon_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             LedIcon(led_color: Color.init(red: 1, green: 0, blue: 0))
-            LedIcon(led_color: Color.init(red: 1, green: 0, blue: 0))
         }
     }
-    
 }
