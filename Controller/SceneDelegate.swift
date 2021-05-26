@@ -21,7 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let myLedModel = LedViewModel()     // Initializes led viewModel
+        let myThemesModel = ThemesViewModel()     // Initializes themes
+
         let contentView = ContentView(viewModel: myLedModel)
+            .environmentObject(myThemesModel)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

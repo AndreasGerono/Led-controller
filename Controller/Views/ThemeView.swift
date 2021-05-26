@@ -10,17 +10,27 @@ import SwiftUI
 
 
 struct ThemeView: View {
-    private var tmpColors = [UIColor.random, UIColor.random, UIColor.random, UIColor.random, UIColor.random, UIColor.random, UIColor.random, UIColor.random]
-    private var theme_names = ["test1", "test2", "test3", "test4", "test5"]
+    @EnvironmentObject var store: ThemesViewModel
     
     @State private var showEditView = false
+    @State private var selectedTheme: ThemeStore.Theme?
+    
     @Environment(\.editMode) private var editMode
     
     var body: some View {
         VStack {
             List {
-                ForEach(theme_names, id: \.self) { name in
-                    Theme(colors: tmpColors, title: name)
+                ForEach(store.themes) { theme in
+                    Theme(colors: theme.colors, title: theme.name)
+                        .onTapGesture {
+                            if (editMode!.wrappedValue == .active) {
+                                print("edit theme!")
+                                selectedTheme = theme
+                                showEditView.toggle()
+                            } else {
+                            print("load theme!")
+                        }
+                    }
                 }
                 .onDelete(perform: delete)
             }
@@ -29,13 +39,16 @@ struct ThemeView: View {
                 .navigationBarItems(trailing: EditButton())
         }
         .sheet(isPresented: $showEditView) {
-            EditTheme(showEditView: $showEditView)
+            EditTheme(showEditView: $showEditView, selected: $selectedTheme)
         }
     }
         
-    
     func delete(at index: IndexSet) {
         print("Deleted! \(index)")
+        for i in index {
+            print("i")
+            store.delete(theme: store.themes[i])
+        }
     }
     
 }
@@ -56,13 +69,27 @@ struct addButton: View {
 
 
 struct EditTheme: View {
+    @EnvironmentObject var store: ThemesViewModel
+    
     @Binding var showEditView: Bool
+    @Binding var selected: ThemeStore.Theme?
+    
     @State private var showColorsView = false
     @State private var sheetTitle = "Select color"
     @State private var selectedColorIndex: Int?
 
-    @State var themename: String = ""
-    @State var colors = [UIColor?](repeating: nil, count: 16)
+    @State var themename: String
+    @State var colors = [UIColor?]()
+    var title: String
+    
+    init(showEditView: Binding<Bool>, selected: Binding<ThemeStore.Theme?>) {
+        self._showEditView = showEditView
+        self._selected = selected
+        
+        self.themename = selected.wrappedValue?.name ?? ""
+        self.colors = selected.wrappedValue?.colors ?? [UIColor?](repeating: nil, count: 16)
+        title = selected.wrappedValue == nil ? "Add theme" : "Edit theme"
+    }
     
     var threeRowGrid = [GridItem(.flexible()), GridItem(.flexible())]
     var body: some View {
@@ -74,17 +101,17 @@ struct EditTheme: View {
                     }
                     Section(header: Text("Theme colors:")) {
                         LazyHGrid(rows: threeRowGrid) {
-                            ForEach(0..<colors.count) { index in
+                            ForEach(colors.indices) { i in
                                 ZStack {
-                                    Circle().fill(Color(colors[index] ?? UIColor.init(white: 1, alpha: 0.1))).frame(width: circleSize(for: geometry.size), height: circleSize(for: geometry.size), alignment: .center)
+                                    Circle().fill(Color(colors[i] ?? defaultColor)).frame(width: circleSize(for: geometry.size), height: circleSize(for: geometry.size), alignment: .center)
                                     
                                     Circle().stroke(lineWidth: circleLine).frame(width: circleSize(for: geometry.size), height: circleSize(for: geometry.size), alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                     
                                 }
                                 .onTapGesture {
-                                    selectedColorIndex = index
+                                    selectedColorIndex = i
                                     showColorsView.toggle()
-                                    sheetTitle = "Select color \(index + 1)"
+                                    sheetTitle = "Select color \(i + 1)"
                                     print("Add color")
                                 }
                             }
@@ -92,18 +119,42 @@ struct EditTheme: View {
                         .frame(width: gridWidth(for: geometry.size), height: gridHeight(for: geometry.size), alignment: .center)
                     }
                 }
-                .navigationBarTitle("Add theme")
+                .navigationBarTitle(title)
                 .navigationBarItems(
-                    leading: Button(action: {showEditView.toggle()}, label: {Text("Cancel")}),
-                    trailing: Button(action: {showEditView.toggle()}, label: {Text("Done")})
+                    leading: Button(
+                        action: {showEditView.toggle()},
+                        label: {Text("Cancel")}),
+                    trailing: Button(
+                        action: {
+                            showEditView.toggle()
+                            if let theme = selected {
+                                store.edit(theme: theme, name: themename, colors: colors.map({$0!}))
+                            } else {
+                                store.addTheme(name: themename, colors: colors.map({$0!}))
+                            }
+                        },
+                        label: {
+                            Text("Save")
+                        }).disabled(formIsVatid ? false : true)
                 )
+                
             }
+            
         }
+ 
+        .onDisappear(perform: {
+            print("disapear!")
+            selected = nil
+        })
         .sheet(isPresented: $showColorsView) {
             ColorsSheet(showColorsView: $showColorsView, sheetTitle: $sheetTitle) { color in
                 colors[selectedColorIndex!] = color
             }
         }
+    }
+    
+    var formIsVatid: Bool {
+        return !self.themename.isEmpty && !self.colors.contains(nil)
     }
     
     func gridWidth(for size: CGSize) -> CGFloat {
@@ -121,27 +172,40 @@ struct EditTheme: View {
     // MARK: - Theme Drawing Constants
     let colorSize: CGFloat = 40
     let circleLine: CGFloat = 2
+    let defaultColor: UIColor = UIColor(white: 1, alpha: 0.01)
 }
 
 struct Theme: View {
     var colors: [UIColor]
     var title: String
+    @State private var colorsPrefix: [UIColor]
+    init(colors: [UIColor], title: String) {
+        self.colors = colors
+        self.title = title
+        self.colorsPrefix = UIDevice.current.orientation.isLandscape ? colors : Array(colors.prefix(maxColors))
+    }
     var body: some View {
         VStack(alignment: .leading) {
             Text("Theme \(title)").font(.title2)
             HStack {
-                ForEach(colors) { color in
+                ForEach(colorsPrefix) { color in
                     Circle()
                         .fill(Color(color))
                         .frame(width: colorSize, height: colorSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 }
-                Text("...").font(.body)
+                if colorsPrefix.count <= maxColors {
+                    Image(systemName: "ellipsis")
+                }
             }
+        }
+        .onRotate { newOrientation in
+            self.colorsPrefix = newOrientation.isLandscape ? colors : Array(colors.prefix(maxColors))
         }
     }
     
     // MARK: - Theme Drawing Constants
     let colorSize: CGFloat = 30
+    let maxColors: Int = 8
 
 }
 

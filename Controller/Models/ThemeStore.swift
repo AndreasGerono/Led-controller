@@ -1,5 +1,5 @@
 //
-//  themeStore.swift
+//  ThemeStore.swift
 //  Controller
 //
 //  Created by Andreas Gerono on 24/05/2021.
